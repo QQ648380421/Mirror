@@ -89,6 +89,15 @@ namespace Mirror
 
         void FixedUpdate()
         {
+            if (layerWeight == null || layerWeight.Length <= 0)
+            {//Fixed an exception when the animation controller is hidden
+                if (animator.isActiveAndEnabled)
+                {
+                    Awake();
+                }
+                return;
+            }
+            
             if (!SendMessagesAllowed)
                 return;
 
